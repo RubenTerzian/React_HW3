@@ -171,7 +171,7 @@ function App() {
           onChange={handleChangeInput}/>
         </div>
         <div>
-          <label htmlFor='name'>Surname</label>
+          <label htmlFor='surname'>Surname</label>
           <input 
           type='text'
           id='surname' 
@@ -180,7 +180,7 @@ function App() {
           onChange={handleChangeInput}/>
         </div>
         <div>
-          <label htmlFor='name'>Email</label>
+          <label htmlFor='email'>Email</label>
           <input 
           type='text'
           id='email' 
