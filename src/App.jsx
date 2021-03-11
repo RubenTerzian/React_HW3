@@ -70,6 +70,7 @@ function App() {
 
   const handleStepUp = (e)=>{
     const allDone = [];
+    let input =''
     const inputsArray = e.target.parentNode.elements;
     if(inputsArray && counter !==3){
       for(let index in inputsArray){
@@ -79,7 +80,7 @@ function App() {
               allDone[index]= true;
               inputsArray[index].className="input";
               inputsArray[index].placeholder = '';
-
+              input = inputsArray[index];
             }else{
               e.preventDefault();
               allDone[index] = false;
@@ -100,8 +101,20 @@ function App() {
     }else{
       let finalState = allDone.some(el => el === false)
       if(!finalState){
-        e.preventDefault();
-        dispatch({type: 'STEP_UP'});
+        if(input.name === 'email'){
+          const validEmail = input.value.match(/^\S+@\S+\.\S+$/);
+          if(validEmail){
+            e.preventDefault();
+            dispatch({type: 'STEP_UP'});
+          }else{
+            e.preventDefault();
+            alert('Некорректный  email')
+          }
+        }else{
+
+          e.preventDefault();
+          dispatch({type: 'STEP_UP'});
+        }
       }
     }
   };
@@ -134,7 +147,6 @@ function App() {
   const handlePickPhoto = (e) => {
     dispatch({type: 'INPUT_DATA', payload:{photo: e.target.src, activeLogo: e.target.src}});
   };
-
 
   const swithTheme = () =>{
     if(!ligthTheme){
