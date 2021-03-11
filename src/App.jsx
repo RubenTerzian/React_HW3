@@ -63,22 +63,22 @@ function App() {
   };
 
   const handleStepUp = (e)=>{
-    let allDone = false;
+    const allDone = [];
     const inputsArray = e.target.parentNode.elements;
     if(inputsArray && counter !==3){
-      for(let element of inputsArray){
-        if(element.nodeName !=="BUTTON"){
-            if(element.value !== ''){
+      for(let index in inputsArray){
+        if(inputsArray[index].nodeName === "INPUT"){
+            if(inputsArray[index].value !== ''){
               e.preventDefault();
-              allDone = true;
-              element.className="input";
-              element.placeholder = '';
+              allDone[index]= true;
+              inputsArray[index].className="input";
+              inputsArray[index].placeholder = '';
 
             }else{
               e.preventDefault();
-              allDone = false;
-              element.className="ampty-input";
-              element.placeholder = "Заполните поле";
+              allDone[index] = false;
+              inputsArray[index].className="ampty-input";
+              inputsArray[index].placeholder = "Заполните поле";
             }
         }
       }
@@ -92,7 +92,8 @@ function App() {
         dispatch({type: 'STEP_UP'});
       }
     }else{
-      if(allDone){
+      let finalState = allDone.some(el => el === false)
+      if(!finalState){
         e.preventDefault();
         dispatch({type: 'STEP_UP'});
       }
