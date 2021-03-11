@@ -68,7 +68,7 @@ function App() {
     if(inputsArray && counter !==3){
       for(let index in inputsArray){
         if(inputsArray[index].nodeName === "INPUT"){
-            if(inputsArray[index].value !== ''){
+            if(inputsArray[index].value !== '' || inputsArray[index].value !== ""){
               e.preventDefault();
               allDone[index]= true;
               inputsArray[index].className="input";
