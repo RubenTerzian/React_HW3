@@ -65,7 +65,7 @@ function App() {
   const handleStepUp = (e)=>{
     let allDone = false;
     const inputsArray = e.target.parentNode.elements;
-    if(inputsArray){
+    if(inputsArray && counter !==3){
       for(let element of inputsArray){
         if(element.nodeName !=="BUTTON"){
             if(element.value !== ''){
