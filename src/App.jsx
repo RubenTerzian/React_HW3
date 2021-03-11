@@ -50,6 +50,7 @@ const reduser = (state, action)=>{
   }
   if(action.type === 'SWITCH_THEME'){
     return{
+  
       ...state,
       ligthTheme: !state.ligthTheme,
     }
@@ -135,8 +136,8 @@ function App() {
   };
 
 
-  const swithTheme = (e) =>{
-    if(ligthTheme){
+  const swithTheme = () =>{
+    if(!ligthTheme){
       document.body.style.filter = ""
       document.body.style.backgroundColor = ""
     }else{
@@ -148,7 +149,7 @@ function App() {
     }
     dispatch({type: "SWITCH_THEME"})
   }
-  
+
   return (<>
   <button className="theme_switcher" onClick={swithTheme}>
     Switch theme
