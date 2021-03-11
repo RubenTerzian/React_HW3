@@ -4,8 +4,12 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: #fefefe;
 }
 
+* { 
+  background-color: inherit;
+}
 .start_registration_btn {
   width: fit-content;
   height: 50px;

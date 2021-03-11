@@ -19,7 +19,7 @@ const initialState = {
   password: '',
   confirmPassword: '',
   counter: 0,
-  activeLogo: '',
+  ligthTheme: true,
 };
 
 const reduser = (state, action)=>{
@@ -42,12 +42,17 @@ const reduser = (state, action)=>{
     };
   }
   if(action.type === 'SUBMIT'){
-    
     return{
       ...state,
       counter: state.counter+1,
     };
     
+  }
+  if(action.type === 'SWITCH_THEME'){
+    return{
+      ...state,
+      ligthTheme: !state.ligthTheme,
+    }
   }
   return state;
 };
@@ -55,7 +60,7 @@ const reduser = (state, action)=>{
 
 function App() {
   const [state, dispatch] = useReducer(reduser, initialState);
-  const {name, surname, email, city, srteet, house, photo, password, confirmPassword, counter, activeLogo} = state;
+  const {name, surname, email, city, srteet, house, photo, password, confirmPassword, counter, ligthTheme} = state;
 
 
   const handleChangeInput = (e) => {
@@ -129,7 +134,25 @@ function App() {
     dispatch({type: 'INPUT_DATA', payload:{photo: e.target.src, activeLogo: e.target.src}});
   };
 
+
+  const swithTheme = (e) =>{
+    if(ligthTheme){
+      document.body.style.filter = ""
+      document.body.style.backgroundColor = ""
+    }else{
+      document.body.style.backgroundColor = "#fefefe;"
+      document.body.style.filter = "invert(100%)"
+      document.body.style.backgroundColor = "inherit"
+      document.body.style.filter = "invert(100%)"
+
+    }
+    dispatch({type: "SWITCH_THEME"})
+  }
+  
   return (<>
+  <button className="theme_switcher" onClick={swithTheme}>
+    Switch theme
+  </button>
   {counter===0 ? 
   (<button 
     className="start_registration_btn" 
