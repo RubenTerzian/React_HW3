@@ -7,6 +7,9 @@
   background-color: #fefefe;
 }
 
+#root.dark{
+  filter: invert(100%);
+}
 * { 
   background-color: inherit;
 }
@@ -128,6 +131,7 @@ button:hover{
   width: 70px;
   height: 70px;
   margin: 4px;
+  border-radius: 50%;
 }
 
 .logo-img:hover{
@@ -141,6 +145,9 @@ button:hover{
   border-radius: 50%;
   overflow: hidden;
   transform: scale(1.1);
+}
+.logo-img.dark, .logo-img:hover.dark, .logo-img.chosen.dark, .final-logo.dark{
+  filter: invert(100%);
 }
 
 .chosen_logo{
